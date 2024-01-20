@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% from 'bootstrap5/form.html' import render_form %}
+
+{% block title %}Plots{% endblock %}
+{% block content %}
+
+
+  <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Select Countries
+  </button>
+  <form action="/" method="post" name="">
+  
+  <div class="dropdown-menu form-group">
+
+     {% for choice in form.choices%}
+
+  <div  class="form-check" >
+
+      <input class="form-check-input" type="checkbox" value="{{choice}}" name="input_country">
+      <label class="form-check-label">{{choice}}</label>
+
+  </div>
+       {% endfor %}
+          <div class="dropdown-divider"></div>
+    <div class="text-center">
+     {{ form.submit(class_="btn btn-success") }}
+  
+    </div>
+  </div>
+  </form>
+</div>
+
+  <div class="container">
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="chart" id="linechart">
+               
+
+            </div>
+        </div>
+            <div class="col-md-6">
+
+            <div class="chart" id="barchart">
+               
+
+            </div>
+        </div>
+    </div>
+  </div>
+{% endblock %}
+
+{%block script%}
+
+<script>
+    var graphs = {{plot|safe}};
+    Plotly.plot('linechart',graphs,{});
+</script>
+<script>
+    var graphs = {{plot2|safe}};
+    Plotly.plot('barchart',graphs,{});
+</script>
+{%endblock%}
