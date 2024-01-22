@@ -5,4 +5,4 @@ This dashboard is part of the Udacity Data Science Portforlio Excercise: Deploy 
 
 I pulled GDP data from the the Worldbank API and used Flask and Plotly to display GDP of the countries of my interest.
 
-<img src="dashboard.gif" />
+<img src="wbDashboard.gif" />
